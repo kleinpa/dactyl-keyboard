@@ -9,7 +9,7 @@ To tinker around this thing, follow these steps:
 1. Install JDK and [leiningen](https://leiningen.org/#install).
 2. Change directory to this repository.
 3. Run `lein ring server-headless`.
-4. Change something in `src/dactyl_keyboard/handler.clj`.
+4. Change something in `src/dactyl/handler.clj`.
 5. Open [localhost:3030](http://localhost:3030).
 
 ### With Nix
@@ -32,7 +32,7 @@ To deploy it in a computer, follow these steps:
 
 To use old workflow where `change code -> save -> openscad reloads model`,
 uncomment `(spit "things/right.scad" (write-scad (model-right c)))` in
-`src/dactyl_keyboard/dactyl.clj` or `src/dactyl_keyboard/lightcycle.clj`.
+`src/dactyl/dactyl.clj` or `src/dactyl/lightcycle.clj`.
 
 ## Single Key PCB
 

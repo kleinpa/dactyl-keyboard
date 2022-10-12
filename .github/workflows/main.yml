@@ -1,0 +1,31 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  push:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build artifacts
+        run: |
+            bazelisk build --disk_cache=/tmp/bazel-cache -c opt //:dactyl
+            echo "bazelBin=$(bazelisk info --disk_cache=/tmp/bazel-cache -c opt bazel-bin)" >> $GITHUB_ENV
+      - name: Debug
+        run: |
+            pwd
+            ls -lah
+            echo $(bazel cquery --disk_cache=/tmp/bazel-cache -c opt --output=files //:dactyl_left.scad)
+            tree
+            ls -lah $(bazel cquery --disk_cache=/tmp/bazel-cache -c opt --output=files //:dactyl_left.scad)
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: scad
+          path: |
+            ${{ env.bazelBin }}/dactyl_left.scad
+            ${{ env.bazelBin }}/dactyl_right.scad
+            ${{ env.bazelBin }}/dactyl_left_plate.scad
+            ${{ env.bazelBin }}/dactyl_right_plate.scad
