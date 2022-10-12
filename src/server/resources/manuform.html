@@ -44,12 +44,7 @@
       If you have downloaded JSON config from this site in the past, you might
       want to try to open it here again:
     </p>
-    <input
-      type="file"
-      name="jsonloader"
-      id="jsonloader"
-      onchange="shove_json()"
-    />
+    <input type="file" name="jsonloader" id="jsonloader" onchange="shove_json()" />
     <br />
     <br />
     <br />
@@ -63,23 +58,9 @@
       </label>
       <fieldset name="keys" id="keys">
         <label for="keys.columns">Number of columns (4 - 7)</label>
-        <input
-          type="number"
-          name="keys.columns"
-          id="keys.columns"
-          value="5"
-          min="4"
-          max="9"
-        />
+        <input type="number" name="keys.columns" id="keys.columns" value="5" min="4" max="9" />
         <label for="keys.rows">Number of rows (3 - 6)</label>
-        <input
-          type="number"
-          name="keys.rows"
-          id="keys.rows"
-          value="4"
-          min="3"
-          max="7"
-        />
+        <input type="number" name="keys.rows" id="keys.rows" value="4" min="3" max="7" />
         <label for="keys.thumb-count">Thumb Key Count</label>
         <select id="keys.thumb-count" name="keys.thumb-count">
           <option value="six">6 (Default)</option>
@@ -172,11 +153,7 @@
         <label for="connector.external">
           Use loligagger's external holder ?
         </label>
-        <select
-          id="connector.external"
-          name="connector.external"
-          onchange="toggle_connectors_fields()"
-        >
+        <select id="connector.external" name="connector.external" onchange="toggle_connectors_fields()">
           <option value="false">No</option>
           <option value="true">Yes</option>
         </select>
@@ -212,35 +189,20 @@
             <label for="form.thumb-cluster-offset-x">
               X (toward the pinky)
             </label>
-            <input
-              type="number"
-              name="form.thumb-cluster-offset-x"
-              id="form.thumb-cluster-offset-x"
-              value="6"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-cluster-offset-x" id="form.thumb-cluster-offset-x" value="6"
+              step="0.1" />
           </div>
           <div class="column column-33">
             <label for="form.thumb-cluster-offset-y">
               Y (toward the index)
             </label>
-            <input
-              type="number"
-              name="form.thumb-cluster-offset-y"
-              id="form.thumb-cluster-offset-y"
-              value="-3"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-cluster-offset-y" id="form.thumb-cluster-offset-y" value="-3"
+              step="0.1" />
           </div>
           <div class="column column-33">
             <label for="form.thumb-cluster-offset-z"> Z (altitude) </label>
-            <input
-              type="number"
-              name="form.thumb-cluster-offset-z"
-              id="form.thumb-cluster-offset-z"
-              value="7"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-cluster-offset-z" id="form.thumb-cluster-offset-z" value="7"
+              step="0.1" />
           </div>
         </div>
         <label for="form.custom-thumb-cluster">
@@ -256,35 +218,20 @@
             <label for="form.thumb-top-right-offset-x">
               X (toward the pinky)
             </label>
-            <input
-              type="number"
-              name="form.thumb-top-right-offset-x"
-              id="form.thumb-top-right-offset-x"
-              value="-15"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-top-right-offset-x" id="form.thumb-top-right-offset-x" value="-15"
+              step="0.1" />
           </div>
           <div class="column column-33">
             <label for="form.thumb-top-right-offset-y">
               Y (toward the index)
             </label>
-            <input
-              type="number"
-              name="form.thumb-top-right-offset-y"
-              id="form.thumb-top-right-offset-y"
-              value="-10"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-top-right-offset-y" id="form.thumb-top-right-offset-y" value="-10"
+              step="0.1" />
           </div>
           <div class="column column-33">
             <label for="form.thumb-top-right-offset-z">Z (altitude)</label>
-            <input
-              type="number"
-              name="form.thumb-top-right-offset-z"
-              id="form.thumb-top-right-offset-z"
-              value="-5"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-top-right-offset-z" id="form.thumb-top-right-offset-z" value="-5"
+              step="0.1" />
           </div>
         </div>
         <div class="row">
@@ -292,10 +239,7 @@
             <label for="form.thumb-top-right-tenting-x">
               X (index-pinky axis) (deg)
             </label>
-            <select
-              id="form.thumb-top-right-tenting-x"
-              name="form.thumb-top-right-tenting-x"
-            >
+            <select id="form.thumb-top-right-tenting-x" name="form.thumb-top-right-tenting-x">
               <option value="69">Default (without curvature)</option>
               {% for ttx in thumb-tenting %}
               <option value="{{ttx}}">{{ttx}}</option>
@@ -306,10 +250,7 @@
             <label for="form.thumb-top-right-tenting-y">
               Y (index axis) (deg)
             </label>
-            <select
-              id="form.thumb-top-right-tenting-y"
-              name="form.thumb-top-right-tenting-y"
-            >
+            <select id="form.thumb-top-right-tenting-y" name="form.thumb-top-right-tenting-y">
               <option value="69">Default (without curvature)</option>
               {% for tty in thumb-tenting %}
               <option value="{{tty}}">{{tty}}</option>
@@ -320,10 +261,7 @@
             <label for="form.thumb-top-right-tenting-z">
               Z (altitude) (deg)
             </label>
-            <select
-              id="form.thumb-top-right-tenting-z"
-              name="form.thumb-top-right-tenting-z"
-            >
+            <select id="form.thumb-top-right-tenting-z" name="form.thumb-top-right-tenting-z">
               <option value="69">Default (without curvature)</option>
               {% for ttz in thumb-tenting %}
               <option value="{{ttz}}">{{ttz}}</option>
@@ -338,35 +276,20 @@
             <label for="form.thumb-top-left-offset-x">
               X (toward the pinky) (deg)
             </label>
-            <input
-              type="number"
-              name="form.thumb-top-left-offset-x"
-              id="form.thumb-top-left-offset-x"
-              value="-35"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-top-left-offset-x" id="form.thumb-top-left-offset-x" value="-35"
+              step="0.1" />
           </div>
           <div class="column column-33">
             <label for="form.thumb-top-left-offset-y">
               Y (toward the index) (deg)
             </label>
-            <input
-              type="number"
-              name="form.thumb-top-left-offset-y"
-              id="form.thumb-top-left-offset-y"
-              value="-16"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-top-left-offset-y" id="form.thumb-top-left-offset-y" value="-16"
+              step="0.1" />
           </div>
           <div class="column column-33">
             <label for="form.thumb-top-left-offset-z">Z (altitude)</label>
-            <input
-              type="number"
-              name="form.thumb-top-left-offset-z"
-              id="form.thumb-top-left-offset-z"
-              value="-2"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-top-left-offset-z" id="form.thumb-top-left-offset-z" value="-2"
+              step="0.1" />
           </div>
         </div>
         <div class="row">
@@ -374,10 +297,7 @@
             <label for="form.thumb-top-left-tenting-x">
               X (index-pinky axis) (deg)
             </label>
-            <select
-              id="form.thumb-top-left-tenting-x"
-              name="form.thumb-top-left-tenting-x"
-            >
+            <select id="form.thumb-top-left-tenting-x" name="form.thumb-top-left-tenting-x">
               <option value="69">Default (without curvature)</option>
               {% for ttx in thumb-tenting %}
               <option value="{{ttx}}">{{ttx}}</option>
@@ -388,10 +308,7 @@
             <label for="form.thumb-top-left-tenting-y">
               Y (index axis) (deg)
             </label>
-            <select
-              id="form.thumb-top-left-tenting-y"
-              name="form.thumb-top-left-tenting-y"
-            >
+            <select id="form.thumb-top-left-tenting-y" name="form.thumb-top-left-tenting-y">
               <option value="69">Default (without curvature)</option>
               {% for tty in thumb-tenting %}
               <option value="{{tty}}">{{tty}}</option>
@@ -402,10 +319,7 @@
             <label for="form.thumb-top-left-tenting-z">
               Z (altitude) (deg)
             </label>
-            <select
-              id="form.thumb-top-left-tenting-z"
-              name="form.thumb-top-left-tenting-z"
-            >
+            <select id="form.thumb-top-left-tenting-z" name="form.thumb-top-left-tenting-z">
               <option value="69">Default (without curvature)</option>
               {% for ttz in thumb-tenting %}
               <option value="{{ttz}}">{{ttz}}</option>
@@ -420,35 +334,20 @@
             <label for="form.thumb-middle-left-offset-x">
               X (toward the pinky)
             </label>
-            <input
-              type="number"
-              name="form.thumb-middle-left-offset-x"
-              id="form.thumb-middle-left-offset-x"
-              value="-53"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-middle-left-offset-x" id="form.thumb-middle-left-offset-x" value="-53"
+              step="0.1" />
           </div>
           <div class="column column-33">
             <label for="form.thumb-middle-left-offset-y">
               Y (toward the index)
             </label>
-            <input
-              type="number"
-              name="form.thumb-middle-left-offset-y"
-              id="form.thumb-middle-left-offset-y"
-              value="-26"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-middle-left-offset-y" id="form.thumb-middle-left-offset-y" value="-26"
+              step="0.1" />
           </div>
           <div class="column column-33">
             <label for="form.thumb-middle-left-offset-z"> Z (altitude) </label>
-            <input
-              type="number"
-              name="form.thumb-middle-left-offset-z"
-              id="form.thumb-middle-left-offset-z"
-              value="-12"
-              step="0.1"
-            />
+            <input type="number" name="form.thumb-middle-left-offset-z" id="form.thumb-middle-left-offset-z" value="-12"
+              step="0.1" />
           </div>
         </div>
         <div class="row">
@@ -456,10 +355,7 @@
             <label for="form.thumb-middle-left-tenting-x">
               X (index-pinky axis)
             </label>
-            <select
-              id="form.thumb-middle-left-tenting-x"
-              name="form.thumb-middle-left-tenting-x"
-            >
+            <select id="form.thumb-middle-left-tenting-x" name="form.thumb-middle-left-tenting-x">
               <option value="69">Default (without curvature)</option>
               {% for ttx in thumb-tenting %}
               <option value="{{ttx}}">{{ttx}}</option>
@@ -470,10 +366,7 @@
             <label for="form.thumb-middle-left-tenting-y">
               Y (index axis)
             </label>
-            <select
-              id="form.thumb-middle-left-tenting-y"
-              name="form.thumb-middle-left-tenting-y"
-            >
+            <select id="form.thumb-middle-left-tenting-y" name="form.thumb-middle-left-tenting-y">
               <option value="69">Default (without curvature)</option>
               {% for tty in thumb-tenting %}
               <option value="{{tty}}">{{tty}}</option>
@@ -482,10 +375,7 @@
           </div>
           <div class="column column-33">
             <label for="form.thumb-middle-left-tenting-z">Z (altitude)</label>
-            <select
-              id="form.thumb-middle-left-tenting-z"
-              name="form.thumb-middle-left-tenting-z"
-            >
+            <select id="form.thumb-middle-left-tenting-z" name="form.thumb-middle-left-tenting-z">
               <option value="69">Default (without curvature)</option>
               {% for ttz in thumb-tenting %}
               <option value="{{ttz}}">{{ttz}}</option>
@@ -505,23 +395,11 @@
         <div class="row" id="form.index-measurement">
           <div class="column column-50">
             <label for="form.stagger-index-y">Y</label>
-            <input
-              type="number"
-              name="form.stagger-index-y"
-              id="form.stagger-index-y"
-              value="0"
-              step="0.1"
-            />
+            <input type="number" name="form.stagger-index-y" id="form.stagger-index-y" value="0" step="0.1" />
           </div>
           <div class="column column-50">
             <label for="form.index-z">Z</label>
-            <input
-              type="number"
-              name="form.stagger-index-z"
-              id="form.stagger-index-z"
-              value="0"
-              step="0.1"
-            />
+            <input type="number" name="form.stagger-index-z" id="form.stagger-index-z" value="0" step="0.1" />
           </div>
         </div>
         <label for="form.middle-measurement">
@@ -530,23 +408,11 @@
         <div class="row" id="form.middle-measurement">
           <div class="column column-50">
             <label for="form.stagger-middle-y">Y</label>
-            <input
-              type="number"
-              name="form.stagger-middle-y"
-              id="form.stagger-middle-y"
-              value="2.8"
-              step="0.1"
-            />
+            <input type="number" name="form.stagger-middle-y" id="form.stagger-middle-y" value="2.8" step="0.1" />
           </div>
           <div class="column column-50">
             <label for="form.stagger-middle-z"> Z </label>
-            <input
-              type="number"
-              name="form.stagger-middle-z"
-              id="form.stagger-middle-z"
-              value="-6.5"
-              step="0.1"
-            />
+            <input type="number" name="form.stagger-middle-z" id="form.stagger-middle-z" value="-6.5" step="0.1" />
           </div>
         </div>
         <label for="form.ring-measurement">
@@ -555,23 +421,11 @@
         <div class="row" id="form.ring-measurement">
           <div class="column column-50">
             <label for="form.stagger-ring-y">Y</label>
-            <input
-              type="number"
-              name="form.stagger-ring-y"
-              id="form.stagger-ring-y"
-              value="0"
-              step="0.1"
-            />
+            <input type="number" name="form.stagger-ring-y" id="form.stagger-ring-y" value="0" step="0.1" />
           </div>
           <div class="column column-50">
             <label for="form.stagger-ring-z"> Z </label>
-            <input
-              type="number"
-              name="form.stagger-ring-z"
-              id="form.stagger-ring-z"
-              value="0"
-              step="0.1"
-            />
+            <input type="number" name="form.stagger-ring-z" id="form.stagger-ring-z" value="0" step="0.1" />
           </div>
         </div>
         <label for="form.pinky-measurement">
@@ -580,23 +434,11 @@
         <div class="row" id="form.pinky-measurement">
           <div class="column column-50">
             <label for="form.stagger-pinky-y">Y</label>
-            <input
-              type="number"
-              name="form.stagger-pinky-y"
-              id="form.stagger-pinky-y"
-              value="-13"
-              step="0.1"
-            />
+            <input type="number" name="form.stagger-pinky-y" id="form.stagger-pinky-y" value="-13" step="0.1" />
           </div>
           <div class="column column-50">
             <label for="form.stagger-pinky-z"> Z </label>
-            <input
-              type="number"
-              name="form.stagger-pinky-z"
-              id="form.stagger-pinky-z"
-              value="6"
-              step="0.1"
-            />
+            <input type="number" name="form.stagger-pinky-z" id="form.stagger-pinky-z" value="6" step="0.1" />
           </div>
         </div>
         <label for="form.wide-pinky">Wide Pinky?</label>
@@ -610,31 +452,11 @@
           <option value="{{ho}}">{{ho}}mm</option>
           {% endfor %}
         </select>
-        <label for="form.web-thickness"
-          >Web thickness (top part of the keyboard around the keyholes)</label
-        >
-        <input
-          type="number"
-          name="form.web-thickness"
-          id="form.web-thickness"
-          value="7"
-          step="0.1"
-          min="1"
-          max="10"
-        />
+        <label for="form.web-thickness">Web thickness (top part of the keyboard around the keyholes)</label>
+        <input type="number" name="form.web-thickness" id="form.web-thickness" value="7" step="0.1" min="1" max="10" />
 
-        <label for="form.wall-thickness"
-          >wall thickness (around the keyboard)</label
-        >
-        <input
-          type="number"
-          name="form.wall-thickness"
-          id="form.wall-thickness"
-          value="3"
-          step="0.1"
-          min="1"
-          max="7"
-        />
+        <label for="form.wall-thickness">wall thickness (around the keyboard)</label>
+        <input type="number" name="form.wall-thickness" id="form.wall-thickness" value="3" step="0.1" min="1" max="7" />
 
         <label for="form.wire-post">Wire Posts?</label>
         <select id="form.wire-post" name="form.wire-post">
@@ -662,24 +484,9 @@
           <option value="false">Left</option>
         </select>
       </fieldset>
-      <input
-        class="button-primary"
-        type="submit"
-        name="generate-case"
-        value="Generate Case"
-      />
-      <input
-        class="button-primary"
-        type="submit"
-        name="generate-plate"
-        value="Generate Plate"
-      />
-      <input
-        class="button-primary"
-        type="submit"
-        name="generate-json"
-        value="Generate JSON"
-      />
+      <input class="button-primary" type="submit" name="generate-case" value="Generate Case" />
+      <input class="button-primary" type="submit" name="generate-plate" value="Generate Plate" />
+      <input class="button-primary" type="submit" name="generate-json" value="Generate JSON" />
     </form>
     <p>Loligagger's external holder files:</p>
     <ul>

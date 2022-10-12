@@ -1,9 +1,9 @@
-(ns dactyl-keyboard.generator
+(ns dactyl.generator
   (:refer-clojure :exclude [use import])
   (:require [scad-clj.scad :refer :all]
             [scad-clj.model :refer :all]
-            [dactyl-keyboard.manuform :as dm]
-            [dactyl-keyboard.lightcycle :as dl]))
+            [dactyl.manuform :as dm]
+            [dactyl.lightcycle :as dl]))
 
 (defn generate-case-dl [confs is-right?]
   (write-scad (if is-right?
@@ -70,7 +70,7 @@
                  :wire-post        (get confs :configuration-use-wire-post?)
                  :screw-inserts    (get confs :configuration-use-screw-inserts?)}
      :misc      {:keycaps    (get confs :configuration-show-caps?)
-                 :right-side is-right? }}))
+                 :right-side is-right?}}))
 
 (defn generate-json-dl [confs is-right?]
   {:keys      {:columns         (get confs :configuration-ncols)

@@ -1,0 +1,17 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  push:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build image
+        run: bazelisk build --disk_cache=/tmp/bazel-cache -c opt //:server_image.tar
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Push image
+        run: bazelisk run @com_github_google_go_containerregistry//cmd/crane:crane -- push --platform linux/amd64 $(bazelisk info -c opt execution_root)/$(bazelisk cquery -c opt //:server_image.tar --output starlark --starlark:expr="target.files.to_list()[0].path") ghcr.io/${{ github.repository }}:${{ github.sha }}

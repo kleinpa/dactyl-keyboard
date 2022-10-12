@@ -1,9 +1,9 @@
-(ns dactyl-keyboard.lightcycle
+(ns dactyl.lightcycle
   (:refer-clojure :exclude [use import])
   (:require [scad-clj.scad :refer :all]
             [scad-clj.model :refer :all]
-            [dactyl-keyboard.util :refer :all]
-            [dactyl-keyboard.common :refer :all]))
+            [dactyl.util :refer :all]
+            [dactyl.common :refer :all]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Placement Functions ;;
@@ -367,7 +367,7 @@
                                (thumb-place c 0  0 (thumb-bl 1))
                                (thumb-place c 1  0 (thumb-br 1))))
        (triangle-hulls #_(thumb-place c 1 -1/2 (thumb-tl 2))
-                       (thumb-place c 0 -1/2 (thumb-bl 2))
+        (thumb-place c 0 -1/2 (thumb-bl 2))
                        (thumb-place c 1 -1/2 (thumb-br 2))
                        (thumb-place c 0 -1/2 (thumb-tl 2))
                        (thumb-place c 1 -1/2 (thumb-tr 2))

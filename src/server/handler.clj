@@ -1,13 +1,16 @@
-(ns dactyl-keyboard.handler
+(ns server.handler
   (:require [clojure.data.json :as json]
             [compojure.core :refer :all]
             [compojure.route :as route]
+            [ring.middleware.resource :refer [wrap-resource]]
             [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
             [ring.middleware.json :as middleware]
             [scad-clj.model :refer [pi]]
-            [selmer.parser :refer [render-file]]
-            [dactyl-keyboard.generator :as g])
+            [selmer.parser :refer [render-file set-resource-path!]]
+            [dactyl.generator :as g])
   (:gen-class))
+
+(set-resource-path! "server/resources")
 
 (defn parse-int [s]
   (Integer/parseInt s))
@@ -458,4 +461,5 @@
   (-> app-routes
       (middleware/wrap-json-body {:keywords? true})
       (middleware/wrap-json-response)
+      (wrap-resource "server/resources/public")
       (wrap-defaults api-defaults)))

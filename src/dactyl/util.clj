@@ -1,4 +1,4 @@
-(ns dactyl-keyboard.util
+(ns dactyl.util
   (:refer-clojure :exclude [use import])
   (:require [scad-clj.scad :refer :all]
             [scad-clj.model :refer :all]))

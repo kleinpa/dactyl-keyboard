@@ -1,4 +1,4 @@
-(ns dactyl-keyboard.common
+(ns dactyl.common
   (:refer-clojure :exclude [use import])
   (:require [clojure.core.matrix :refer [mmul]]
             [scad-clj.scad :refer :all]
@@ -233,9 +233,9 @@
                               :mx true
                               :mx-snap-in true
                               false) #_(get c :configuration-create-side-nub?)
-      nub-height           (case switch-type
-                              :mx-snap-in 0.75
-                              0) 
+        nub-height           (case switch-type
+                               :mx-snap-in 0.75
+                               0)
         use-alps?           (case switch-type
                               :alps true
                               false) #_(get c :configuration-use-alps?)
@@ -324,22 +324,20 @@
         choc-socket-holder-height 5.5
         choc-socket-holder-thickness 1
         choc-hotswap-socket-holder (difference
-                                (->> (cube 10 7 choc-socket-holder-height)
-                                     (translate [2 5 hotswap-base-z-offset]))
-                                (->> (cube 5 7 choc-socket-holder-height)
-                                     (translate [-0.6 6 (+ hotswap-base-z-offset choc-socket-holder-thickness)]))
-                                (->> (cube 7 7 choc-socket-holder-height)
-                                     (translate [5 4 (+ hotswap-base-z-offset choc-socket-holder-thickness)]))
-                                )
+                                    (->> (cube 10 7 choc-socket-holder-height)
+                                         (translate [2 5 hotswap-base-z-offset]))
+                                    (->> (cube 5 7 choc-socket-holder-height)
+                                         (translate [-0.6 6 (+ hotswap-base-z-offset choc-socket-holder-thickness)]))
+                                    (->> (cube 7 7 choc-socket-holder-height)
+                                         (translate [5 4 (+ hotswap-base-z-offset choc-socket-holder-thickness)])))
         hotswap-holder      (union (if use-choc? choc-hotswap-socket-holder ())
-                                (difference swap-holder 
-                                        main-axis-hole
-                                        (union plus-hole plus-hole-mirrored)
-                                        (union minus-hole minus-hole-mirrored)
-                                        friction-hole-left
-                                        friction-hole-right
-                                        hotswap-base-shape)
-                            )]
+                                   (difference swap-holder
+                                               main-axis-hole
+                                               (union plus-hole plus-hole-mirrored)
+                                               (union minus-hole minus-hole-mirrored)
+                                               friction-hole-left
+                                               friction-hole-right
+                                               hotswap-base-shape))]
     (difference (union plate-half
                        (->> plate-half
                             (mirror [1 0 0])
