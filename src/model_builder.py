@@ -3,6 +3,9 @@ import copy
 import importlib
 from generate_configuration import *
 
+# TODO(kleinpa): This file won't work. With output specification pushed into the build 
+# system, it's not quite clear how this sort of dynamic generation should work. Maybe this 
+# should just become a directory of config examples?
 
 base = shape_config
 
@@ -85,12 +88,12 @@ def build_release(base, configurations, engines=('solid', 'cadquery')):
         shape_config = copy.deepcopy(base)
         for item in config:
             shape_config[item] = config[item]
-    
+
         for engine in engines:
             shape_config['ENGINE'] = engine
             with open('run_config.json', mode='w') as fid:
                 json.dump(shape_config, fid, indent=4)
-    
+
             if init:
                 import dactyl_manuform as dactyl_manuform
                 dactyl_manuform.run()

@@ -10,16 +10,9 @@ r2d = 180 / pi
 
 shape_config = {
 
-    'ENGINE': 'solid',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade
-    # 'ENGINE': 'cadquery',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade
-
-
     ######################
     ## Shape parameters ##
     ######################
-
-    'save_dir': '.',
-    'config_name':  "DM",
 
     'show_caps': False,
     'show_pcbs': False, #only runs if caps are shown, easist place to initially inject geometry
@@ -464,38 +457,6 @@ shape_config = {
     ####################################
     ## END CONFIGURATION SECTION
     ####################################
-
-def save_config():
-    # Check to see if the user has specified an alternate config
-    opts, args = getopt.getopt(sys.argv[1:], "", ["config=", "update="])
-    got_opts = False
-    for opt, arg in opts:
-        if opt in ('--update'):
-            with open(os.path.join(r"..", "configs", arg + '.json'), mode='r') as fid:
-                data = json.load(fid)
-                shape_config.update(data)
-            got_opts = True
-
-    for opt, arg in opts:
-        if opt in ('--config'):
-            # If a config file was specified, set the config_name and save_dir
-            shape_config['save_dir'] = arg
-            shape_config['config_name'] = arg
-            got_opts = True
-
-    # Write the config to ./configs/<config_name>.json
-    if got_opts:
-        with open(os.path.join(r"..", "configs", shape_config['config_name'] + '.json'), mode='w') as fid:
-            json.dump(shape_config, fid, indent=4)
-
-    else:
-        with open(os.path.join(r".", 'run_config.json'), mode='w') as fid:
-            json.dump(shape_config, fid, indent=4)
-
-
+    
 if __name__ == '__main__':
-    save_config()
-
-    ## HERE FOR QUICK TESTING, SHOULD BE COMMENTED ON COMMIT
-    from dactyl_manuform import *
-    run()
+    json.dump(shape_config, sys.stdout, indent=4)

@@ -1,0 +1,26 @@
+name: build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build artifacts
+        run: |
+          python -m pip install --pre cadquery
+          bazelisk build --disk_cache=/tmp/bazel-cache -c opt \
+              //build:dactyl_right.svg \
+              //build:dactyl_right.stl \
+              //build:dactyl_right_plate.stl \
+              //build:dactyl_left.stl \
+              //build:dactyl_left_plate.stl
+          echo "bazelBin=$(bazelisk info --disk_cache=/tmp/bazel-cache -c opt bazel-bin)" >> $GITHUB_ENV
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dactyl
+          path: ${{ env.bazelBin }}/build/*

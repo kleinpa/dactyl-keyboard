@@ -1,0 +1,20 @@
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+load("//src:defs.bzl", "dactyl_manuform")
+
+dactyl_manuform(
+    name = "dactyl",
+    outs = [
+        # Pre-declare outputs used by GitHub Action directly
+        "dactyl_right.svg",
+        "dactyl_left.stl",
+        "dactyl_left_plate.stl",
+        "dactyl_right.stl",
+        "dactyl_right_plate.stl",
+    ],
+    config = "config.json",
+)
+
+pkg_tar(
+    name = "release",
+    srcs = [":dactyl"],
+)
