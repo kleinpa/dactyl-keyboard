@@ -1,5 +1,6 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
-load("//src:defs.bzl", "dactyl_manuform")
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("//src:dactyl.bzl", "dactyl_manuform")
 
 dactyl_manuform(
     name = "dactyl",
@@ -17,4 +18,10 @@ dactyl_manuform(
 pkg_tar(
     name = "release",
     srcs = [":dactyl"],
+    visibility = ["//visibility:public"],
+)
+
+build_test(
+    name = "release_test",
+    targets = [":release"],
 )

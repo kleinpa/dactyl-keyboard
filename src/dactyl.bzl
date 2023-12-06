@@ -1,3 +1,65 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+
+def py_dactyl(name, src, outs = None, defaults = False):
+    """Convenience macro for testing the built-in configs."""
+
+    if not outs:
+        outs = [
+            # Pre-declare outputs used by GitHub Action directly
+            name + "_right.svg",
+            name + "_left.stl",
+            name + "_left_plate.stl",
+            name + "_right.stl",
+            name + "_right_plate.stl",
+        ]
+    bin_name = name + "_bin"
+    py_binary(
+        name = bin_name,
+        main = src,
+        srcs = [src],
+    )
+
+    config_name = name + "_config"
+    generate_config(
+        name = config_name,
+        bin = bin_name,
+    )
+
+    dactyl_manuform(
+        name = name,
+        config = config_name,
+        outs = outs,
+        defaults = defaults,
+    )
+
+    test_name = name + "_test"
+    build_test(
+        name = test_name,
+        targets = [name],
+    )
+
+def _generate_config(ctx):
+    output_file = ctx.actions.declare_file("{}.json".format(ctx.label.name))
+
+    ctx.actions.run(
+        outputs = [output_file],
+        arguments = [output_file.path],
+        executable = ctx.executable.bin,
+    )
+
+    return [DefaultInfo(files = depset([output_file]))]
+
+generate_config = rule(
+    implementation = _generate_config,
+    attrs = {
+        "bin": attr.label(
+            executable = True,
+            cfg = "exec",
+        ),
+    },
+)
+
 def _dactyl_manuform(ctx):
     parts = ["right", "left", "left_plate", "right_plate"]
     formats = ["stl", "dxf", "svg"]
@@ -17,6 +79,7 @@ def _dactyl_manuform(ctx):
                 "--part={}".format(part),
                 "--defaults" if ctx.attr.defaults else "--nodefaults",
             ],
+            env = {"USERPROFILE": "."},  # requried on windows
             executable = ctx.executable._generator,
         )
 
@@ -31,6 +94,7 @@ def _dactyl_manuform(ctx):
                     "--output={}".format(output_file.path),
                     "--format={}".format(format),
                 ],
+                env = {"USERPROFILE": "."},  # requried on windows
                 executable = ctx.executable._step_format,
             )
 

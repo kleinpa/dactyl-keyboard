@@ -1,0 +1,56 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+load("@pip//:requirements.bzl", "requirement")
+load("//src:dactyl.bzl", "py_dactyl")
+
+py_binary(
+    name = "dactyl_manuform",
+    srcs = [
+        "dactyl_manuform.py",
+        "generate_configuration.py",
+        "helpers_cadquery.py",
+    ],
+    data = glob(["parts/*"]),
+    visibility = ["//visibility:public"],
+    deps = [
+        requirement("absl-py"),
+        requirement("numpy"),
+        requirement("scipy"),
+        requirement("cadquery"),
+    ],
+)
+
+py_binary(
+    name = "model_builder",
+    srcs = ["model_builder.py"],
+)
+
+py_binary(
+    name = "step_format",
+    srcs = ["step_format.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        requirement("absl-py"),
+        requirement("cadquery"),
+    ],
+)
+
+py_dactyl(
+    name = "default",
+    src = "generate_configuration.py",
+)
+
+py_dactyl(
+    name = "mklasklasd",
+    src = "generate_configuration_mklasklasd.py",
+)
+
+# py_dactyl(
+#     name = "orbyl_test",
+#     src = "generate_configuration_orbyl_test.py",
+# )
+
+# py_dactyl(
+#     name = "test",
+#     src = "generate_configuration_test.py",
+#     defaults = True,
+# )
