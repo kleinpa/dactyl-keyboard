@@ -7,8 +7,8 @@ import numpy as np
 from absl import app, flags
 from numpy import pi
 
-import generate_configuration as cfg
-from helpers_cadquery import *
+import src.generate_configuration as cfg
+from src.helpers_cadquery import *
 
 FLAGS = flags.FLAGS
 flags.DEFINE_string('config', '', 'Configuration file path.')

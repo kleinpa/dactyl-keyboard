@@ -1,3 +1,24 @@
+def _generate_config(ctx):
+    output_file = ctx.actions.declare_file("{}.json".format(ctx.label.name))
+
+    ctx.actions.run(
+        outputs = [output_file],
+        arguments = ["--output={}".format(output_file.path)],
+        executable = ctx.executable.bin,
+    )
+
+    return [DefaultInfo(files = depset([output_file]))]
+
+generate_config = rule(
+    implementation = _generate_config,
+    attrs = {
+        "bin": attr.label(
+            executable = True,
+            cfg = "exec",
+        ),
+    },
+)
+
 def _dactyl_manuform(ctx):
     parts = ["right", "left", "left_plate", "right_plate"]
     formats = ["stl", "dxf", "svg"]
@@ -17,6 +38,7 @@ def _dactyl_manuform(ctx):
                 "--part={}".format(part),
                 "--defaults" if ctx.attr.defaults else "--nodefaults",
             ],
+            env = {"XDG_CONFIG_HOME": "."},
             executable = ctx.executable._generator,
         )
 

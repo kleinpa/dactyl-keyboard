@@ -1,11 +1,12 @@
 load("@rules_python//python:defs.bzl", "py_binary")
-load("@py_deps//:requirements.bzl", "requirement")
-load("//src:defs.bzl", "dactyl_manuform")
+load("@pip//:requirements.bzl", "requirement")
+load("//src:dactyl.bzl", "dactyl_manuform", "generate_config")
 
 py_binary(
     name = "dactyl_manuform",
     srcs = [
         "dactyl_manuform.py",
+        "generate_configuration.py",
         "helpers_cadquery.py",
     ],
     data = glob(["parts/*"]),
@@ -17,7 +18,12 @@ py_binary(
         # Loading cadquery's dep cadquery-ocp fails in bazel with an error like:
         #     AssertionError: In cadquery_ocp-7.6.3a0-cp39-cp39-manylinux_2_31_x86_64.whl, LICENSES_bundled.txt is not mentioned in RECORD
         # so for now just make sure it's already installed on the host. :(
-        # requirement("cadquery"),
+
+        # or on windows:
+        #   File "c:\users\klein\_bazel_klein\jonudlmy\execroot\_main\bazel-out\x64_windows-opt-exec-2b5cbbc6\bin\src\dactyl_manuform.exe.runfiles\rules_python~0.27.0~pip~pip_311_cadquery\site-packages\cadquery\occ_impl\geom.py", line 5, in <module>
+        #     from OCP.gp import (
+        # ImportError: DLL load failed while importing OCP: The filename or extension is too long.
+        requirement("cadquery"),
     ],
 )
 
@@ -29,30 +35,36 @@ py_binary(
 py_binary(
     name = "generate_configuration",
     srcs = ["generate_configuration.py"],
+    deps = [requirement("absl-py")],
 )
 
-genrule(
+generate_config(
     name = "configuration_default",
-    outs = ["configuration_default.json"],
-    cmd = "./$(location :generate_configuration) > $@",
-    exec_tools = [":generate_configuration"],
+    bin = ":generate_configuration",
 )
 
 dactyl_manuform(
     name = "default",
+    outs = [
+        # Pre-declare outputs used by GitHub Action directly
+        "default_right.svg",
+        "default_left.stl",
+        "default_left_plate.stl",
+        "default_right.stl",
+        "default_right_plate.stl",
+    ],
     config = ":configuration_default",
 )
 
 py_binary(
     name = "generate_configuration_mklasklasd",
     srcs = ["generate_configuration_mklasklasd.py"],
+    deps = [requirement("absl-py")],
 )
 
-genrule(
+generate_config(
     name = "configuration_mklasklasd",
-    outs = ["configuration_mklasklasd.json"],
-    cmd = "./$(location :generate_configuration_mklasklasd) > $@",
-    exec_tools = [":generate_configuration_mklasklasd"],
+    bin = ":generate_configuration_mklasklasd",
 )
 
 # dactyl_manuform(
@@ -63,13 +75,12 @@ genrule(
 py_binary(
     name = "generate_configuration_orbyl_test",
     srcs = ["generate_configuration_orbyl_test.py"],
+    deps = [requirement("absl-py")],
 )
 
-genrule(
+generate_config(
     name = "configuration_orbyl_test",
-    outs = ["configuration_orbyl_test.json"],
-    cmd = "./$(location :generate_configuration_orbyl_test) > $@",
-    exec_tools = [":generate_configuration_orbyl_test"],
+    bin = ":generate_configuration_orbyl_test",
 )
 
 # dactyl_manuform(
@@ -80,13 +91,12 @@ genrule(
 py_binary(
     name = "generate_configuration_test",
     srcs = ["generate_configuration_test.py"],
+    deps = [requirement("absl-py")],
 )
 
-genrule(
+generate_config(
     name = "configuration_test",
-    outs = ["configuration_test.json"],
-    cmd = "./$(location :generate_configuration_test) > $@",
-    exec_tools = [":generate_configuration_test"],
+    bin = ":generate_configuration_test",
 )
 
 dactyl_manuform(
@@ -101,6 +111,6 @@ py_binary(
     visibility = ["//visibility:public"],
     deps = [
         requirement("absl-py"),
-        # requirement("cadquery"),
+        requirement("cadquery"),
     ],
 )

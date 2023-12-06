@@ -1,5 +1,5 @@
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
-load("//src:defs.bzl", "dactyl_manuform")
+load("//src:dactyl.bzl", "dactyl_manuform")
 
 dactyl_manuform(
     name = "dactyl",
