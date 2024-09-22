@@ -1,12 +1,10 @@
 absl-py
-cadquery-ocp~=7.7.0
-cadquery~=2.2.0
+cadquery~=2.4.0
 casadi~=3.6.0
 ezdxf~=1.1.0
-multimethod~=1.10
 nlopt~=2.7.1
 nptyping
-numpy~=1.25.2
+numpy~=2.1.0
 path~=16.5.0
 scipy~=1.9.3
 typish~=1.9.3
