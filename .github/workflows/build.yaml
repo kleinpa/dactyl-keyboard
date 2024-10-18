@@ -21,7 +21,7 @@ jobs:
               //build:dactyl_left_plate.stl
           echo "bazelBin=$(bazelisk info --disk_cache=/tmp/bazel-cache -c opt bazel-bin)" >> $GITHUB_ENV
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dactyl
           path: ${{ env.bazelBin }}/build/*
