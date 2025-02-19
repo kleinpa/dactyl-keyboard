@@ -1,4 +1,4 @@
-module(name = "dactyl_keyboard", version = "0.0.0")
+module(name = "dactyl-keyboard", version = "0.0.0")
 
 bazel_dep(name = "bazel_skylib", version = "1.7.1")
 bazel_dep(name = "rules_python", version = "1.1.0")
@@ -9,9 +9,9 @@ PYTHON_VERSION = "3.11"
 
 pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
 pip.parse(
-    hub_name = "pip",
+    hub_name = "pip_dactyl_keyboard",
     python_version = PYTHON_VERSION,
     requirements_lock = "//:requirements_lock.txt",
     requirements_windows = "//:requirements_windows.txt",
 )
-use_repo(pip, "pip")
+use_repo(pip, "pip_dactyl_keyboard")

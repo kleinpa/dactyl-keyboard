@@ -1,5 +1,6 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@pip_dactyl_keyboard//:requirements.bzl", "requirement")
 load("@rules_python//python:defs.bzl", "py_binary")
-load("@pip//:requirements.bzl", "requirement")
 load("//src:dactyl.bzl", "py_dactyl")
 
 py_binary(
@@ -16,6 +17,7 @@ py_binary(
         requirement("numpy"),
         requirement("scipy"),
         requirement("cadquery"),
+        requirement("cadquery-ocp"),
     ],
 )
 
@@ -54,3 +56,8 @@ py_dactyl(
 #     src = "generate_configuration_test.py",
 #     defaults = True,
 # )
+
+build_test(
+    name = "build_test",
+    targets = [":dactyl_manuform"],
+)
