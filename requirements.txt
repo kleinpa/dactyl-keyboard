@@ -1,6 +1,6 @@
 absl-py
 cadquery~=2.5.2
-casadi~=3.6.0
+casadi~=3.7.0
 ezdxf~=1.4.0
 nlopt~=2.9.0
 nptyping
