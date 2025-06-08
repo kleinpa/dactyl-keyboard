@@ -4,7 +4,7 @@ casadi~=3.7.0
 ezdxf~=1.4.0
 nlopt~=2.9.0
 nptyping
-numpy~=2.2.0
+numpy~=2.3.0
 path~=17.1.0
 scipy~=1.15.0
 typish~=1.9.3
