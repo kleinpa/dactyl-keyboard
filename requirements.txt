@@ -6,6 +6,6 @@ nlopt~=2.10.0
 nptyping
 numpy~=2.4.0
 path~=17.1.0
-scipy~=1.16.0
+scipy~=1.17.0
 typish~=1.9.3
 cadquery-ocp~=7.9.3
