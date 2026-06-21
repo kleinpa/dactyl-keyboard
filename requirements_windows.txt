@@ -8,9 +8,9 @@ absl-py==1.4.0 \
     --hash=sha256:0d3fe606adfa4f7db64792dd4c7aee4ee0c38ab75dfd353b7a83ed3e957fcb47 \
     --hash=sha256:d2c244d01048ba476e7c080bd2c6df5e141d211de80223460d5b3b8a2a58433d
     # via -r requirements.txt
-cadquery==2.2.0 \
-    --hash=sha256:92855894e618192c1106f87a75569f464478074a635921c9b5cd415b66a3e17b \
-    --hash=sha256:94cc1d72bdfa9d2885b3d05b63e34cf4da8076f78e1276d210ab7eae8aaae2b0
+cadquery==2.8.0 \
+    --hash=sha256:0acaddf36415551c26c3f8237907980ba86c277e211c32398121c839f719c81f \
+    --hash=sha256:6aa56cf7f4cc30f71770572baa7260d7c0a8ae96a84a01df88dae3c97563c26f
     # via -r requirements.txt
 cadquery-ocp==7.7.1 \
     --hash=sha256:14597a8b4b10f711c6a7f2eb8e4dd85b25586b0206c773a37c2d0a3c34c7172b \
